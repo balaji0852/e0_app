@@ -1,0 +1,44 @@
+#Box{
+    background-color:#FEFEFF;
+    border-radius: 0px 0px 12px 12px;
+    display: flex;
+    width: 33%;
+    flex-direction: column;
+    margin: 7px;
+    padding-bottom: 10px;
+}
+
+
+#Header{
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color:whitesmoke;
+}
+
+#HeaderName{
+    display: flex;
+    margin-left: 30%;
+    margin-right: 25%;
+}
+
+#HeaderName_{
+    display: flex;
+    margin-left: 30%;
+    margin-right: 18%;
+}
+
+#Graphs{
+    padding:8px;
+    margin: auto;
+    display: flex;
+}
+
+@media (max-width:1225px){
+
+    #Graphs{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}

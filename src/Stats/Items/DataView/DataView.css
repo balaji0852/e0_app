@@ -1,0 +1,29 @@
+#graph{
+    width: 65px;
+    height: 70px;
+    margin: auto;
+}
+
+#ItemName{
+    margin-top: 10px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width:1400px){
+    #ItemName{
+        /* background-color: black; */
+        display: flex;
+        flex-direction: column;
+    }    
+
+}
+
+
+
+#DataItems{
+    width: 130px;
+    margin: auto;
+}
+

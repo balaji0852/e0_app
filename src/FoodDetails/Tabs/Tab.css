@@ -1,0 +1,10 @@
+#tabs{
+    width:120px;
+    height:35px;
+    background-color:white;
+    border-top-right-radius: 40px 45px;
+    border-top-left-radius: 12px 12px;
+    align-items: center;
+    padding-left: 8px;
+    padding-top: 12px;
+}
