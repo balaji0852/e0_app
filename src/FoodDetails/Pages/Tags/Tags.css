@@ -2,6 +2,8 @@
     background-color: yellow;
     border-radius: 10px 10px 10px 10px;
     text-align: center;
-    width: 80px;
+    width: 65px;
+    height: 20px;
+    font-size: 12px;
     display: block;
 }

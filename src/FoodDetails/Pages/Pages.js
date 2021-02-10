@@ -3,10 +3,12 @@ import ColumnName from './cells/ColumnName'
 class Pages extends Component{
 
     state = {
+        selected : false,
         isLoaded:false,
         data :{},
-        items:{},
     }
+
+    dishes = {}
 
     componentDidMount(){
         fetch('https://beta.eagleowl.in/api/v1/mock/organization/18/outlet/18/recipe/recipes/?'+this.props.query)
@@ -15,34 +17,43 @@ class Pages extends Component{
                 result => {
                     this.setState({
                         isLoaded:true,
-                        data:result.results,
+                        data:result.results,             
                      });
             },(error)=>{
                 this.setState({
                     isLoaded:false,
                 })
             });
-    }       
+    }     
 
+    // componentDidUpdate(){
+    //     console.log('componentdidUpdate')
+    // }
+
+   
 
     render(){
+
         if(this.state.isLoaded){
-            const temp = [<ColumnName ColumnName='True' SelectAll={()=>{console.log('hell')}}></ColumnName>];
-            let i = 0;
-            this.state.data.forEach(element => {
-                    if(i%2!=0){
-                            temp.push(<ColumnName ColumnName='False' state={element} color='whitesmoke'>
-                            </ColumnName>)
-                        i++;
-                    }
-                    else{
-                            temp.push(<ColumnName ColumnName='False' state={element}>
-                            </ColumnName>)
-                        i++;
-                    }
-            });
+            let i = -1;
+            this.dishes = (
+                <div>
+                    {
+                        this.state.data.map((element,index)=>{
+                            if(index==0){
+                                return (<ColumnName key={element.name} ColumnTitle='True'  SelectAll={()=>this.setState({selected : !this.state.selected})}></ColumnName>);
+                            }
+                            else if(index%2==0){
+                                return (<ColumnName key={element.name} ColumnTitle='False'  state={element}  onChange={()=>{}}checked={this.state.selected}></ColumnName>);
+                            }
+                            else{
+                                return (<ColumnName key={element.name} ColumnTitle='False' onChange={()=>{}}  state={element}  color='whitesmoke' checked={this.state.selected}></ColumnName>);
+                            }
+                    })}
+                </div>
+            )
             return (<div>
-                {temp}
+                {this.dishes}
             </div>)
         }
         else{

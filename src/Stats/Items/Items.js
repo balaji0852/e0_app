@@ -31,7 +31,6 @@ class TableItem extends Component{
   render(){
 
 
-    console.log(this.props.PercentageView);
 
     if(this.props.PercentageView=='True'){
         if(this.state.isLoaded){
@@ -60,7 +59,6 @@ class TableItem extends Component{
     
 
     if(this.state.isLoaded){
-        console.log(this.state.data[0]);
         return(     
             <div id='Box'>
                 <div id="Header"><div id='HeaderName_'>{this.props.Header}</div></div>

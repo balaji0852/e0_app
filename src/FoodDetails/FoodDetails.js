@@ -1,18 +1,17 @@
-import React,{Component} from 'react';
+import React,{Component, lazy, Suspense} from 'react';
 import './FoodDetails.css'
 import ColumnName from './Pages/cells/ColumnName';
-import Tab from './Tabs/Tab.js'
-class FoodDetails extends Component{
+import LoadingPage from './LoadingPage/LoadingPage.js';
 
- 
+const pages = lazy(()=>{import('./Pages/Pages')})
 
-    render(){
+const FoodDetails = ()=>{
         return (
             <div>
-               <pages query={this.props.List}></pages>
+                <Suspense fallback={<LoadingPage></LoadingPage>}> <pages query={this.props.List}></pages></Suspense>     
             </div>
         );
-    }
-}
+ }
+
 
 export default FoodDetails;
