@@ -7,7 +7,7 @@ const Dataview = (props)=>{
     return (
         <div id="DataItems">
              <div id='ItemName'>{props.name}</div>
-                <br></br>
+            <br></br>
             <div id='graph'>               
                 <CircularProgressbar value={props.percentage} text={`${props.percentage}%`} 
                 styles={buildStyles({rotation: 0.001,

@@ -15,12 +15,26 @@
 }
 
 
+
 #Tabs{
   margin-left: auto;
   margin-right: auto;
   display: flex; 
 }
 
+
+#tab{
+  width:120px;
+  height:50px;
+  background-color:white;
+  border-top-right-radius: 40px 45px;
+  border-top-left-radius: 12px 12px;
+  align-items: center;
+  padding-left: 8px;
+  padding-top: 12px;
+  outline: none;
+  border: 1px white solid;
+}
 
 
 

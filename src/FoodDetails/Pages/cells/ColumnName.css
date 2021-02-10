@@ -1,25 +1,32 @@
 #Column{
-    padding-top: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
    display: flex;
    align-content:space-between;
    background-color:#93B3F6;
    height: 35   px;
 }
 
+#Elements:hover{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: large;
+}
 
 #Elements{
-    padding-top: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     display: flex;
     background-color: white;
     color: black;
-    height: 35px;
+    /* height: 35px; */
     align-content:space-between;
 }
 
 
 #ColumnEle{
     width:11%;
-    height:30px;
+    /* height:30px; */
     display: flex;
     flex-direction: column;
     padding-right: 25px;

@@ -6,9 +6,11 @@
 
 #ItemName{
     margin-top: 10px;
+    margin-bottom: 8px;
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    justify-content: center;
 }
 
 @media (max-width:1400px){

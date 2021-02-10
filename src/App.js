@@ -4,6 +4,7 @@ import FoodDetails from './FoodDetails/FoodDetails';
 import ColumnName from './FoodDetails/Pages/cells/ColumnName';
 import Tab from './FoodDetails/Tabs/Tab';
 import StatsComponent from './Stats/StatsComponent';
+import Pages from './FoodDetails/Pages/Pages'
 
 
 class App extends Component{
@@ -13,32 +14,20 @@ class App extends Component{
 
   render(){
 
-    const data = {
-      'name':'idly',
-      'last_update':'Feb 10',
-      'cogs':'10.00',
-      'cost_price':'100.00',
-      'sale_price':'120.00',
-      'gross_margin':'25.00'
-    }
-
+ 
 
     return (<div id='main'>
       <StatsComponent></StatsComponent>
       <br></br>
       <div id='Tabs'>
-        <Tab name='ALL RECIPE(S)'></Tab>
-        <Tab name='INCORRECT'></Tab>
-        <Tab name='UNTAGGED'></Tab>
-        <Tab name='DISABLED'></Tab>
+        <button id='tab' onClick={()=>{console.log('all recipes')}}>ALL RECIPE(S)</button>
+        <button id='tab' onClick={()=>{console.log('incorrect')}}>INCORRECT</button>
+        <button id='tab' onClick={()=>{console.log('untagged ')}}>UNTAGGED</button>
+        <button id='tab' onClick={()=>{console.log('disabled')}}>DISABLED</button>
       </div>
       <div id='Layout'>
-      <ColumnName ColumnName='True'></ColumnName>
-      <ColumnName ColumnName='False' state={data}></ColumnName>
-      <ColumnName ColumnName='False' state={data}></ColumnName>
-      <ColumnName ColumnName='False' state={data}></ColumnName>
-      <ColumnName ColumnName='False' state={data}></ColumnName>
-      <ColumnName ColumnName='False' state={data}></ColumnName></div>
+          <Pages>hello</Pages>
+      </div>
     </div>
     );
   }

@@ -7,4 +7,6 @@
     align-items: center;
     padding-left: 8px;
     padding-top: 12px;
+    outline: none;
+    border: 1px white solid;
 }

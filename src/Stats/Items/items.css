@@ -8,6 +8,10 @@
     padding-bottom: 10px;
 }
 
+#Box:hover{
+    width: 37%;
+    margin:4px;
+}
 
 #Header{
     width: 100%;
