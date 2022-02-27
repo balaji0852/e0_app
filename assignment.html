@@ -1,0 +1,150 @@
+<htmL>
+	<head>
+		<style>
+			#clear{
+				height:30px;
+				width:60px;
+				margin:auto;
+			}
+			#painter{
+				height:700px;
+				width:800px;
+				margin:auto;
+  				background-color:white;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="painter">
+			<canvas id="myCanvas" height='700px' width='800px'></canvas>
+		<Button id='clear'>clear</Button>
+		</div>
+<script>
+	
+
+	
+
+var canvas,ctx,dragging = false,dragStartPoint,imgData;
+var count = 0,items = [];
+ 
+function getCanvasCoordinates(event) {
+    var x = event.clientX - canvas.getBoundingClientRect().left,
+        y = event.clientY - canvas.getBoundingClientRect().top;
+
+    return {x: x, y: y};
+}
+
+
+function copy() {
+    imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+}
+
+
+function paste() {
+    ctx.putImageData(imgData, 0, 0);
+}
+  
+
+
+
+function drawTriangle(position,color)
+{  
+
+    var coordinates = [],
+    angle = 100,
+    sides = 3,
+    
+    radius = Math.sqrt(Math.pow((dragStartPoint.x - position.x), 2) + Math.pow((dragStartPoint.x - position.x), 2)),
+    index = 0;
+    for (index = 0; index < sides; index++) {
+        coordinates.push({x: dragStartPoint.x + radius * Math.cos(angle), y: dragStartPoint.y - radius * Math.sin(angle)});
+        angle += (2 * Math.PI) / sides;
+    } 
+
+    ctx.beginPath();
+    ctx.moveTo(coordinates[0].x, coordinates[0].y);
+
+    for (index = 1; index < sides; index++) {
+        ctx.lineTo(coordinates[index].x, coordinates[index].y);
+    }
+   
+    ctx.fillStyle = color;
+    ctx.closePath();
+    ctx.fill();
+    canvas.addEventListener('dblclick',function(){
+        temp = getCanvasCoordinates(event);
+            flag = []
+            items.forEach(function(Element){
+                if (temp.x!=Element.pos.x && temp.y!=Element.pos.y){
+                    flag.push(Element)
+                }
+            });
+    });
+	return {'pos':position,'color':color}
+}
+   
+
+  function randomColor( )
+  {  
+    var r = Math.round(Math.random( )*256);
+    var g = Math.round(Math.random( )*256);
+    var b = Math.round(Math.random( )*256);
+
+    return 'rgb( ' + r + ',' + g + ',' + b + ')';
+
+  }
+
+
+function dragStart(event) {
+    dragging = true;
+    dragStartPoint = getCanvasCoordinates(event);
+    copy();
+}
+
+function drag(event) {
+    var position;
+    if (dragging === true) {
+        paste();
+        position = getCanvasCoordinates(event);
+        pos = drawTriangle(position,randomColor( ));
+    }
+}
+
+function dragStop(event) {
+    dragging = false;
+    //paste();
+    var position = getCanvasCoordinates(event);
+    color = randomColor();
+    pos = drawTriangle(position,color);
+    items.push(pos)
+
+    if(!dragging){
+            ctx.clearRect(0,0,canvas.width, canvas.height); 
+            items.forEach(function(Element){
+                    console.log('stopped');
+                    drawTriangle(Element.pos,Element.color);
+            });
+            items = items; 
+    }
+}  
+
+function init() {
+    canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext('2d');
+   
+    canvas.addEventListener('mousedown', dragStart, false);
+    canvas.addEventListener('mousemove', drag, false);
+    canvas.addEventListener('mouseup', dragStop, false);
+    document.getElementById("clear").addEventListener('mousedown',function(){
+    
+});  
+
+}
+
+window.addEventListener('load', init, false);
+
+</script>
+
+</body>
+</html>

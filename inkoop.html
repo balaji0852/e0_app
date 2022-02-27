@@ -1,0 +1,91 @@
+<HTM>
+  <head>
+  <style>
+  body{
+    width:0.5%;
+    padding:10px;
+    margin:auto;
+  }
+  </style>
+  </head>
+  <body>
+  <div id='btn'>
+    <Button onclick="game()">
+      Start
+    </Button>
+  </div>
+  </body>
+  <script>
+
+start = function(max){
+	  return Math.floor(Math.random()*Math.floor(max));
+}
+
+
+game = function(){
+	  console.clear();
+	  var PBanks = [],bunks = 0;
+    for(var i=0;i<5;i++){
+  		  bunks = start(100);
+        while(bunks==0){
+      	    bunks = start(100);
+        }
+  	  	PBanks.push(bunks); 	
+    }
+    var petrol = 30,j = 0,p = 0,s = 1,temp = 0;
+    console.log('Game started');
+	  console.log('Petrol pumps generated at '+PBanks);
+    while(j<=100){	
+        temp = start(6);
+        j = j==0?temp:j+temp;
+
+        
+        if(j==PBanks[0]){
+            petrol = petrol+PBanks[0];
+            console.log('At petrol bunk:filling petrol');
+        }
+        if(j==PBanks[1]){
+            petrol = petrol+PBanks[1];
+            console.log('At petrol bunk:filling petrol');
+        }
+        if(j==PBanks[2]){
+            petrol = petrol+PBanks[2];
+            console.log('At petrol bunk:filling petrol');
+        }
+        if(j==PBanks[3]){
+            petrol = petrol+PBanks[3];
+            console.log('At petrol bunk:filling petrol');
+        }
+        if(j==PBanks[4]){
+            petrol = petrol+PBanks[4];
+            console.log('At petrol bunk:filling petrol');
+        }
+
+
+        if(petrol==0 || petrol<0){
+            console.log('No Fuel'); 
+            break;
+        }
+        if(petrol-temp==0){
+              petrol = petrol-temp;
+              console.log('Move '+s+' - Car at '+j+' petrol remaining '+petrol+ ' game over');
+              break;
+        }
+        else if(petrol-temp<0 && j<100){
+              console.log('Move '+s+' - Car at '+j+' petrol remaining '+0+ ' game over');
+              break;
+        }
+        else if(j>=100){
+              petrol = petrol-temp;
+              console.log('Move '+s+' - Car at '+j+' petrol remaining '+petrol+ ' reached');
+              break;
+        }
+        else{
+        petrol = petrol-temp;
+              console.log('Move '+s+' - Car at '+j+' petrol remaining '+petrol);
+              s = s+1;
+        }
+   } 
+}
+  </script>
+</HTM>
