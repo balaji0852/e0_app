@@ -2,6 +2,7 @@ import './ColumnName.css';
 import TagElement from '../Tags/Tags';
 
 
+
 const ColumnName = (props)=>{
 
 if(props.ColumnTitle=='True'){

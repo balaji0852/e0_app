@@ -47,6 +47,7 @@ class Pages extends Component{
                                 return (<ColumnName key={element.name} ColumnTitle='False'  state={element}  onChange={()=>{}}checked={this.state.selected}></ColumnName>);
                             }
                             else{
+                        
                                 return (<ColumnName key={element.name} ColumnTitle='False' onChange={()=>{}}  state={element}  color='whitesmoke' checked={this.state.selected}></ColumnName>);
                             }
                     })}
